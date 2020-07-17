@@ -39,15 +39,14 @@ def user_input (question, valid_answers):
         answer: The answer, in lowercase, string format, entered by the user.
     """
 
+    user_answer = '' # Start the while loop with a blank answer.
 
-    answer = '' # Start the while loop with a blank answer.
-
-    while answer not in valid_answers: # User hasn't provided an answer within the valid answer list.
-        answer = input(str(question)).lower() # Do comparisons in lowercase to be safe and consistent.
-        if answer not in valid_answers: # User still hasn't provided an answer within the valid answer list.
+    while user_answer not in valid_answers: # User hasn't provided an answer within the valid answer list.
+        user_answer = input(str(question)).lower() # Do comparisons in lowercase to be safe and consistent.
+        if user_answer not in valid_answers: # User still hasn't provided an answer within the valid answer list.
                 if input('An invalid answer was given. Would you like to try again? [y/n] ')[0] != 'y':
                     break # User does not want to try, return nothing.
-    return answer
+    return user_answer
 
 def get_filters():
     """
@@ -120,7 +119,6 @@ def load_data(city, month, day):
     # The file loaded fine and has been filtered, now return the dataframe.
 
     return df 
-
 
 def time_stats(df):
     """
@@ -209,7 +207,7 @@ def convert_seconds_to_string(time_seconds):
         (str) : AAn expression of the seconds interger as a readable duration.
     """
     
-    days = time_seconds // 86400 # There are 86400 seconds in a day. 
+    days = (time_seconds // 86400) # There are 86400 seconds in a day. 
     hours = (time_seconds - (days * 86400)) // 3600 # First remove the days that have already been calculated above.
     minutes = (time_seconds - (days * 86400) - (hours * 3600)) // 60 # Take out both days and hours.
     seconds = time_seconds - (days * 86400) - (hours * 3600) - (minutes * 60) # Take days, hours and minutes out - only seconds are left.
@@ -321,17 +319,22 @@ def display_raw_data(df):
 
 def main():
     while True: # Start the main method loop.
+
         city, month, day = get_filters() #  Get the filters with user input.
+
         try: 
             if city != 'Invalid' and month != 'Invalid' and day != 'Invalid': # Check that only valid answers were input.
                 df = load_data(city, month, day) # Load the relevant CSV file and filter the data.
                 if len(df) != 0: # The object has been loaded but it might not have data after filtering.    
+                    
                     # Statistical methods follow:
+
                     time_stats(df) 
                     station_stats(df)
                     trip_duration_stats(df)
                     user_stats(df)
                     display_raw_data(df)
+        
         except:
             print('\nAn unexpected error has occurred.')
 
