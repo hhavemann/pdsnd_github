@@ -122,7 +122,6 @@ def load_data(city, month, day):
 
     return df 
 
-
 def time_stats(df):
     """
     Displays statistics on the most frequent times of travel.
@@ -210,7 +209,7 @@ def convert_seconds_to_string(time_seconds):
         (str) : AAn expression of the seconds interger as a readable duration.
     """
     
-    days = time_seconds // 86400 # There are 86400 seconds in a day. 
+    days = (time_seconds // 86400) # There are 86400 seconds in a day. 
     hours = (time_seconds - (days * 86400)) // 3600 # First remove the days that have already been calculated above.
     minutes = (time_seconds - (days * 86400) - (hours * 3600)) // 60 # Take out both days and hours.
     seconds = time_seconds - (days * 86400) - (hours * 3600) - (minutes * 60) # Take days, hours and minutes out - only seconds are left.
@@ -322,17 +321,22 @@ def display_raw_data(df):
 
 def main():
     while True: # Start the main method loop.
+        
         city, month, day = get_filters() #  Get the filters with user input.
+
         try: 
             if city != 'Invalid' and month != 'Invalid' and day != 'Invalid': # Check that only valid answers were input.
                 df = load_data(city, month, day) # Load the relevant CSV file and filter the data.
                 if len(df) != 0: # The object has been loaded but it might not have data after filtering.    
+                    
                     # Statistical methods follow:
+
                     time_stats(df) 
                     station_stats(df)
                     trip_duration_stats(df)
                     user_stats(df)
                     display_raw_data(df)
+        
         except:
             print('\nAn unexpected error has occurred.')
 
