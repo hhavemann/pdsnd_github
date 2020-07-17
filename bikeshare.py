@@ -60,7 +60,6 @@ def get_filters():
     """
     print('\nHello! Let\'s explore some US bikeshare data!\n')
     
-    
     # Get user input for city.
     
     city = user_input('Please select a city - [c] for Chicago, [n] for New York City or [w] for Washington: ', list(CITIES.keys()))
@@ -133,7 +132,7 @@ def time_stats(df):
         none
     """
     
-    try: # Just wrapping it all in a general try clause, not getting specific with error handling.
+    try: # Wrapping it all in a general try clause, not getting specific with error handling.
 
         print('\nCalculating The Most Frequent Times of Travel...\n')
         start_time = time.time()
@@ -173,7 +172,7 @@ def station_stats(df):
     
     """
 
-    try: # Just wrapping it all in a general try clause, not getting specific with error handling.
+    try: # Wrapping it all in a general try clause, not getting specific with error handling.
 
         print('\nCalculating The Most Popular Stations and Trip...\n')
         start_time = time.time()
@@ -227,7 +226,7 @@ def trip_duration_stats(df):
         none
     """
     
-    try: # Just wrapping it all in a general try clause, not getting specific with error handling.
+    try: # Wrapping it all in a general try clause, not getting specific with error handling.
 
         print('\nCalculating Trip Duration...\n')
         start_time = time.time()
