@@ -27,10 +27,10 @@ Reads in bikeshare data in CSV format from three distinct cities. The bikeshare.
 Lastly, the option to view the raw data is presented to the user.
 
 ### Files used
-bikeshare.py
-chicago.csv
-new_york_city.csv
-washington.csv
+* bikeshare.py
+* chicago.csv
+* new_york_city.csv
+* washington.csv
 
 ### Credits
 Udacity
