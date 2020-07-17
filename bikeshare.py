@@ -39,15 +39,14 @@ def user_input (question, valid_answers):
         answer: The answer, in lowercase, string format, entered by the user.
     """
 
+    user_answer = '' # Start the while loop with a blank answer.
 
-    answer = '' # Start the while loop with a blank answer.
-
-    while answer not in valid_answers: # User hasn't provided an answer within the valid answer list.
-        answer = input(str(question)).lower() # Do comparisons in lowercase to be safe and consistent.
-        if answer not in valid_answers: # User still hasn't provided an answer within the valid answer list.
+    while user_answer not in valid_answers: # User hasn't provided an answer within the valid answer list.
+        user_answer = input(str(question)).lower() # Do comparisons in lowercase to be safe and consistent.
+        if user_answer not in valid_answers: # User still hasn't provided an answer within the valid answer list.
                 if input('An invalid answer was given. Would you like to try again? [y/n] ')[0] != 'y':
                     break # User does not want to try, return nothing.
-    return answer
+    return user_answer
 
 def get_filters():
     """
@@ -321,7 +320,7 @@ def display_raw_data(df):
 
 def main():
     while True: # Start the main method loop.
-        
+
         city, month, day = get_filters() #  Get the filters with user input.
 
         try: 
